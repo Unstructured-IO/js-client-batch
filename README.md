@@ -34,3 +34,7 @@ By default this script will output partitioned results to `./output` or you can 
 ...
 OUTPUT_PATH=full/path/to/output
 ```
+
+### Start
+
+To run the script `npm run start`
