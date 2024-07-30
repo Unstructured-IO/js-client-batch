@@ -12,8 +12,8 @@ const url = process.env.UNSTRUCTURED_API_URL
 const key = process.env.UNSTRUCTURED_API_KEY
 const strategy = process.env.STRATEGY || 'fast'
 const splitPages = process.env.SPLIT_PAGES === 'true' ? true : false
-const docsPath = process.env.DOCS_PATH || path.resolve(__dirname, "./sample_data");
-const outputPath = process.env.OUTPUT_PATH || path.resolve(__dirname, "./output");
+const docsPath = process.env.DOCS_PATH || path.resolve(__dirname, "sample");
+const outputPath = process.env.OUTPUT_PATH || path.resolve(__dirname, "output");
 
 const logger = createLogger({
   level: 'info',
@@ -57,7 +57,8 @@ const partition = async (data, file) => await client.general.partition({
   });
 
 const writeResults = async (outputPath, file, res) => {
-    const outputName = file.split('/')[1]
+  console.log(file)
+    const outputName = file.split('/').pop()
     await writeFile(
         `${outputPath}/${outputName}.json`,
         JSON.stringify(res.elements),
